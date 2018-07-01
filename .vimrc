@@ -21,6 +21,11 @@ set mouse=a " 允许使用鼠标
 set autoread " 文件发生变化，自动读取
 set ignorecase " 搜索忽略大小写
 
+" set foldenable
+set foldmethod=syntax
+set foldlevelstart=99 " 默认不折叠"
+" nnoremap <space> @=((foldclosed(line('.')) < 0) ? 'zc' : 'zo')<CR>
+
 " 光标在上次编辑位置
 au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g'\"" | endif
 
@@ -40,7 +45,7 @@ autocmd FileType javascript,html,vue,css,md set expandtab
 " autocmd FileType javascript,html,vue,css,md set sts=2
 
 try
-	set guifont=Hack:h16
+	set guifont=Hack:h18
 catch
 endtry
 
@@ -76,6 +81,10 @@ call plug#begin(vimPlug)
 Plug 'Valloric/YouCompleteMe'
 Plug 'rdnetto/YCM-Generator', { 'branch': 'stable' }
 
+Plug 'w0rp/ale'
+
+" Plug 'ybian/smartim'
+
 " 注释
 Plug 'scrooloose/nerdcommenter'
 Plug 'scrooloose/nerdtree'
@@ -93,11 +102,11 @@ Plug 'mxw/vim-jsx', { 'for': 'javascript' }
 Plug 'junegunn/goyo.vim', { 'for': 'markdown' }
 Plug 'junegunn/limelight.vim', { 'for': 'markdown' }
 
-Plug 'mattn/emmet-vim', { 'for': 'html' }
+" Plug 'mattn/emmet-vim', { 'for': 'html' }
 
 Plug 'posva/vim-vue', { 'for': 'vue' }
 
-Plug 'tpope/vim-fugitive'
+" Plug 'tpope/vim-fugitive'
 
 Plug 'tpope/vim-surround'
 
@@ -112,7 +121,16 @@ call plug#end()
 " 主题
 let g:molokai_original = 1
 let g:rehash256 = 1
-colorscheme molokai
+
+try
+    colorscheme molokai
+catch
+endtry
+
+" let g:ale_fixers = {
+            " \    'javascript': ['eslint'],
+            " \}
+" let g:ale_fix_on_save = 1
 
 " nerdtree
 map <C-n> :NERDTreeToggle<CR>
@@ -141,4 +159,13 @@ autocmd FileType vue syntax sync fromstart
 " ack
 map <Leader>a :Ack -i<Space>
 
+let g:ale_sign_error = '✗'
+let g:ale_sign_warning = '⚡'
+
 " let g:rainbow_active = 1
+
+" javascript-vim
+" augroup javascript_folding
+"     au!
+"     au FileType javascript setlocal foldmethod=syntax
+" augroup END

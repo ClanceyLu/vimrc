@@ -13,6 +13,10 @@ git clone https://github.com/ClanceyLu/vimrc.git $HOME/.vim_conf && cd $HOME/.vi
 
 ### 配置
 
+默认没有开启
+编辑`my_plugins.vim`，取消`Plug 'Valloric/YouCompleteMe'`的注释
+然后执行`:PlugInstall`
+
 ```
 cd ~/.vim/plugged/YouCompleteMe
 # 仅安装javascript支持

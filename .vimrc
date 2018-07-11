@@ -1,4 +1,5 @@
-set nu " 行号
+" set nu " 行号
+set rnu " 动态行号
 syntax on " 语法高亮
 set encoding=utf-8 " 编码格式
 set smarttab
@@ -9,6 +10,10 @@ set ts=4
 set sts=4
 set expandtab
 set wrap
+
+if has('python3')
+    silent! python3 1
+endif
 
 set history=500
 filetype plugin on
@@ -23,11 +28,24 @@ set ignorecase " 搜索忽略大小写
 
 " set foldenable
 set foldmethod=syntax
-set foldlevelstart=99 " 默认不折叠"
+" set foldlevelstart=99 " 默认不折叠
 " nnoremap <space> @=((foldclosed(line('.')) < 0) ? 'zc' : 'zo')<CR>
 
 " 光标在上次编辑位置
 au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g'\"" | endif
+
+" 不备份文件
+set nobackup
+set nowb
+set noswapfile
+
+" 切换窗口
+map <C-j> <C-W>j
+map <C-k> <C-W>k
+map <C-h> <C-W>h
+map <C-l> <C-W>l
+
+" map <leader>bd :Bclose<cr>:tabclose<cr>gT
 
 " undo持久化
 if has('persistent_undo')
@@ -36,6 +54,8 @@ if has('persistent_undo')
 	" set undolevels=1000
 	" set undoreload=1000
 endif
+
+source ~/git/vimrc/my_plugins.vim
 
 " 设置js等文件自动缩进两个空格
 " autocmd FileType javascript,html,vue,css,md set ai
@@ -73,50 +93,7 @@ let mapleader=','
 
 map <Leader>n :bn<CR>
 map <Leader>p :bp<CR>
-
-" vim-plug
-let vimPlug=$HOME.'/.vim/plugged'
-call plug#begin(vimPlug)
-
-Plug 'Valloric/YouCompleteMe'
-Plug 'rdnetto/YCM-Generator', { 'branch': 'stable' }
-
-Plug 'w0rp/ale'
-
-" Plug 'ybian/smartim'
-
-" 注释
-Plug 'scrooloose/nerdcommenter'
-Plug 'scrooloose/nerdtree'
-
-" 自动闭合
-Plug 'jiangmiao/auto-pairs'
-
-Plug 'tomasr/molokai'
-
-Plug 'vim-airline/vim-airline'
-
-Plug 'pangloss/vim-javascript', { 'for': 'javascript' }
-Plug 'mxw/vim-jsx', { 'for': 'javascript' }
-
-Plug 'junegunn/goyo.vim', { 'for': 'markdown' }
-Plug 'junegunn/limelight.vim', { 'for': 'markdown' }
-
-" Plug 'mattn/emmet-vim', { 'for': 'html' }
-
-Plug 'posva/vim-vue', { 'for': 'vue' }
-
-" Plug 'tpope/vim-fugitive'
-
-Plug 'tpope/vim-surround'
-
-Plug 'airblade/vim-gitgutter'
-
-Plug 'mileszs/ack.vim'
-
-" Plug 'luochen1990/rainbow'
-
-call plug#end()
+map <silent> <Leader><CR> :nohl<CR>
 
 " 主题
 let g:molokai_original = 1
@@ -151,7 +128,14 @@ let g:NERDCompactSexyComs = 1
 set updatetime=100
 
 " airline
-let g:airline#extensions#tabline#enabled = 1
+" let g:airline#extensions#tabline#enabled = 1
+
+" let g:ycm_key_invoke_completion = '<c-z>'
+" 关闭函数原型提示
+set completeopt=menu,menuone
+let g:ycm_add_preview_to_completeopt=0
+" 关闭代码检查
+let g:ycm_show_diagonstics_ui=0
 
 " vue
 autocmd FileType vue syntax sync fromstart
@@ -169,3 +153,21 @@ let g:ale_sign_warning = '⚡'
 "     au!
 "     au FileType javascript setlocal foldmethod=syntax
 " augroup END
+
+map <Leader> <Plug>(easymotion-prefix)
+
+" lightline
+set laststatus=2
+
+if has('nvim')
+    let g:deoplete#enable_at_startup = 1
+    inoremap <silent><expr> <TAB>
+                \ pumvisible() ? "\<C-n>" :
+                \ <SID>check_back_space() ? "\<TAB>" :
+                \ deoplete#mappings#manual_complete()
+    function! s:check_back_space() abort "{{{
+        let col = col('.') - 1
+        return !col || getline('.')[col - 1]  =~ '\s'
+    endfunction"}}}
+endif
+

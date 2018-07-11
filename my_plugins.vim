@@ -1,0 +1,61 @@
+" vim-plug
+let vimPlug=$HOME.'/.vim/plugged'
+call plug#begin(vimPlug)
+
+if has('nvim')
+    Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
+    Plug 'carlitux/deoplete-ternjs', { 'do': 'npm install -g tern' }
+else
+    Plug 'Valloric/YouCompleteMe'
+endif
+
+" Plug 'rdnetto/YCM-Generator', { 'branch': 'stable' }
+
+" Plug 'ternjs/tern_for_vim'
+
+Plug 'w0rp/ale'
+
+" Plug 'ybian/smartim'
+
+" 注释
+Plug 'scrooloose/nerdcommenter'
+Plug 'scrooloose/nerdtree'
+
+" Plug 'rbgrouleff/bclose.vim'
+
+" Plug 'amix/open_file_under_cursor.vim'
+
+Plug 'easymotion/vim-easymotion'
+
+" 自动闭合
+Plug 'jiangmiao/auto-pairs'
+
+Plug 'tomasr/molokai'
+
+" Plug 'vim-airline/vim-airline'
+Plug 'itchyny/lightline.vim'
+
+Plug 'pangloss/vim-javascript', { 'for': 'javascript' }
+Plug 'mxw/vim-jsx', { 'for': 'javascript' }
+
+Plug 'junegunn/goyo.vim', { 'for': 'markdown' }
+Plug 'junegunn/limelight.vim', { 'for': 'markdown' }
+
+" Plug 'mattn/emmet-vim', { 'for': 'html' }
+
+Plug 'posva/vim-vue', { 'for': 'vue' }
+
+" Plug 'tpope/vim-fugitive'
+
+Plug 'tpope/vim-surround'
+
+Plug 'airblade/vim-gitgutter'
+
+Plug 'mileszs/ack.vim'
+
+" 显示标记
+Plug 'kshenoy/vim-signature'
+
+" Plug 'luochen1990/rainbow'
+
+call plug#end()

@@ -55,7 +55,10 @@ if has('persistent_undo')
 	" set undoreload=1000
 endif
 
-source ~/git/vimrc/my_plugins.vim
+try
+    source ./my_plugins.vim
+catch
+endtry
 
 " 设置js等文件自动缩进两个空格
 " autocmd FileType javascript,html,vue,css,md set ai

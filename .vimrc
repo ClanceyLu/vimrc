@@ -1,4 +1,4 @@
-" set nu " 行号
+set nu " 行号
 set rnu " 动态行号
 syntax on " 语法高亮
 set encoding=utf-8 " 编码格式
@@ -45,6 +45,15 @@ map <C-k> <C-W>k
 map <C-h> <C-W>h
 map <C-l> <C-W>l
 
+" 修改插入光标的形状
+if exists('$TMUX')
+    let &t_SI = "\<Esc>Ptmux;\<Esc>\<Esc>]50;CursorShape=1\x7\<Esc>\\"
+    let &t_EI = "\<Esc>Ptmux;\<Esc>\<Esc>]50;CursorShape=0\x7\<Esc>\\"
+else
+    let &t_SI = "\<Esc>]50;CursorShape=1\x7"
+    let &t_EI = "\<Esc>]50;CursorShape=0\x7"
+endif
+
 " map <leader>bd :Bclose<cr>:tabclose<cr>gT
 
 " undo持久化
@@ -55,8 +64,9 @@ if has('persistent_undo')
 	" set undoreload=1000
 endif
 
+let pwd=expand('%:p')
 try
-    source ./my_plugins.vim
+    source pwd.'/my_plugins.vim'
 catch
 endtry
 
@@ -174,3 +184,5 @@ if has('nvim')
     endfunction"}}}
 endif
 
+let g:ctrlp_map='<C-p>'
+let g:crtlp_cmd='CtrlP'

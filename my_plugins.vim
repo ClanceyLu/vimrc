@@ -6,7 +6,7 @@ if has('nvim')
     Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
     Plug 'carlitux/deoplete-ternjs', { 'do': 'npm install -g tern' }
 else
-    " Plug 'Valloric/YouCompleteMe'
+    Plug 'Valloric/YouCompleteMe'
 endif
 
 " Plug 'rdnetto/YCM-Generator', { 'branch': 'stable' }
@@ -26,6 +26,9 @@ Plug 'scrooloose/nerdtree'
 " Plug 'amix/open_file_under_cursor.vim'
 
 Plug 'easymotion/vim-easymotion'
+
+" ctrlp
+Plug 'kien/ctrlp.vim'
 
 " 自动闭合
 Plug 'jiangmiao/auto-pairs'

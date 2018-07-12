@@ -64,9 +64,11 @@ if has('persistent_undo')
 	" set undoreload=1000
 endif
 
-let pwd=expand('%:p')
+" TODO: 根据安装自动生成目录
+" let pluginPath=fnamemodify('my_plugins.vim', ':p')
 try
-    source pwd.'/my_plugins.vim'
+    source ~/.vim_conf/my_plugins.vim
+    " execute 'source '.pluginPath
 catch
 endtry
 

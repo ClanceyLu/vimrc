@@ -125,7 +125,7 @@ endtry
 " let g:ale_fix_on_save = 1
 
 " nerdtree
-map <C-n> :NERDTreeToggle<CR>
+map <Leader>nn :NERDTreeToggle<CR>
 
 " nerdcommenter
 " 注释前一个空格
@@ -188,3 +188,9 @@ endif
 
 let g:ctrlp_map='<C-p>'
 let g:crtlp_cmd='CtrlP'
+
+" 加载个人配置
+try
+    source ~/.vimrc.local
+catch
+endtry

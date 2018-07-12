@@ -63,4 +63,9 @@ Plug 'kshenoy/vim-signature'
 
 " Plug 'luochen1990/rainbow'
 
+try
+    source ~/.vim.plugins.local
+catch
+endtry
+
 call plug#end()

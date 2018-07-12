@@ -21,7 +21,7 @@ git clone https://github.com/ClanceyLu/vimrc.git $HOME/.vim_conf && cd $HOME/.vi
 
 ## 截图预览
 
-![截图](img/lscreenshort.png?raw=true)
+![截图](img/screenshort.png?raw=true)
 
 ## 添加自己的配置
 

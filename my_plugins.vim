@@ -9,13 +9,15 @@ else
     " Plug 'Valloric/YouCompleteMe'
 endif
 
-Plug 'terryma/vim-multiple-cursors'
+" Plug 'terryma/vim-multiple-cursors'
 
 " Plug 'rdnetto/YCM-Generator', { 'branch': 'stable' }
 
 " Plug 'ternjs/tern_for_vim'
 
 Plug 'w0rp/ale'
+let g:ale_fixers = {'javascript': ['prettier', 'eslint']}
+map <Leader>P :ALEFix<CR>
 
 " Plug 'ybian/smartim'
 
@@ -36,6 +38,12 @@ Plug 'kien/ctrlp.vim'
 Plug 'jiangmiao/auto-pairs'
 
 Plug 'tomasr/molokai'
+
+Plug 'chrisbra/NrrwRgn'
+
+" Plug 'prettier/vim-prettier', {
+"   \ 'do': 'npm install',
+"   \ 'for': ['javascript', 'typescript', 'css', 'less', 'scss', 'json', 'graphql', 'markdown', 'vue'] }
 
 " Plug 'vim-airline/vim-airline'
 Plug 'itchyny/lightline.vim'

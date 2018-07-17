@@ -6,10 +6,10 @@ if has('nvim')
     Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
     Plug 'carlitux/deoplete-ternjs', { 'do': 'npm install -g tern' }
 else
-    " Plug 'Valloric/YouCompleteMe'
+    Plug 'Valloric/YouCompleteMe'
 endif
 
-" Plug 'terryma/vim-multiple-cursors'
+Plug 'terryma/vim-multiple-cursors'
 
 " Plug 'rdnetto/YCM-Generator', { 'branch': 'stable' }
 
@@ -33,6 +33,9 @@ Plug 'easymotion/vim-easymotion'
 
 " ctrlp
 Plug 'kien/ctrlp.vim'
+let g:ctrlp_custom_ignore = {
+            \ 'dir': '\v[\/]\node_modules&',
+            \ }
 
 " 自动闭合
 Plug 'jiangmiao/auto-pairs'
@@ -50,6 +53,7 @@ Plug 'itchyny/lightline.vim'
 
 Plug 'pangloss/vim-javascript', { 'for': 'javascript' }
 Plug 'mxw/vim-jsx', { 'for': 'javascript' }
+let g:jsx_ext_required = 0
 
 Plug 'junegunn/goyo.vim', { 'for': 'markdown' }
 Plug 'junegunn/limelight.vim', { 'for': 'markdown' }

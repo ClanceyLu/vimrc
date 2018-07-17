@@ -2,6 +2,9 @@ try
     source ~/.vim_conf/basic.vim
 catch
 endtry
+if has('python3')
+    silent! python3 1
+endif
 " TODO: 根据安装自动生成目录
 " let pluginPath=fnamemodify('my_plugins.vim', ':p')
 try
@@ -18,9 +21,12 @@ endtry
 if has('gui_running')
 	" some code
 	" set background=light
-	set transparency=10
-	set guifont=Hack:h16
-end
+	set transparency=1
+	set guifont=Hack:h14
+    " au GUIEnter * simalt ~x
+    set guioptions-=L
+    set guioptions-=r
+endif
 
 " 主题
 let g:molokai_original = 1
@@ -70,9 +76,8 @@ autocmd FileType vue syntax sync fromstart
 " ack
 map <Leader>a :Ack -i<Space>
 
-" let g:ale_sign_error = '✗'
+let g:ale_sign_error = '✗'
 let g:ale_sign_warning = '⚡'
-let g:ale_sign_error = '😱'
 
 " let g:rainbow_active = 1
 

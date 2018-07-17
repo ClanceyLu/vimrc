@@ -60,9 +60,9 @@ set cursorline
 
 " 设置js等文件自动缩进两个空格
 " autocmd FileType javascript,html,vue,css,md set ai
-autocmd FileType javascript,html,vue,css,md set sw=2
-autocmd FileType javascript,html,vue,css,md set ts=2
-autocmd FileType javascript,html,vue,css,md set expandtab
+autocmd FileType javascript.jsx,html,vue,css,md set sw=2
+autocmd FileType javascript.jsx,html,vue,css,md set ts=2
+autocmd FileType javascript.jsx,html,vue,css,md set expandtab
 " autocmd FileType javascript,html,vue,css,md set sts=2
 
 " 修改<Leader>为','

@@ -24,6 +24,7 @@ map <Leader>P :ALEFix<CR>
 " 注释
 Plug 'scrooloose/nerdcommenter'
 Plug 'scrooloose/nerdtree'
+autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
 
 " Plug 'rbgrouleff/bclose.vim'
 
@@ -33,9 +34,7 @@ Plug 'easymotion/vim-easymotion'
 
 " ctrlp
 Plug 'kien/ctrlp.vim'
-let g:ctrlp_custom_ignore = {
-            \ 'dir': '\v[\/]\node_modules&',
-            \ }
+let g:ctrlp_custom_ignore = 'node_modules\|DS_Store\|git'
 
 " 自动闭合
 Plug 'jiangmiao/auto-pairs'
@@ -74,6 +73,8 @@ Plug 'mileszs/ack.vim'
 Plug 'kshenoy/vim-signature'
 
 " Plug 'luochen1990/rainbow'
+
+Plug 'chr4/nginx.vim'
 
 try
     source ~/.vim.plugins.local

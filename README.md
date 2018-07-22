@@ -80,7 +80,7 @@ map <C-l> <C-W>l
 ### 文件
 
 插件NERDTree
-- 打开/关闭: `<Leader>nn`
+- 打开/关闭: `<C-e>`
 
 ### 代码折叠
 

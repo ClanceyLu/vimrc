@@ -21,7 +21,7 @@ endtry
 if has('gui_running')
 	" some code
 	" set background=light
-	set transparency=1
+	set transparency=10
 	set guifont=Hack:h14
     " au GUIEnter * simalt ~x
     set guioptions-=L
@@ -43,7 +43,7 @@ endtry
 " let g:ale_fix_on_save = 1
 
 " nerdtree
-map <Leader>nn :NERDTreeToggle<CR>
+map <C-e> :NERDTreeToggle<CR>
 
 " nerdcommenter
 " 注释前一个空格

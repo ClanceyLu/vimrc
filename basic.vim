@@ -78,6 +78,8 @@ map <C-h> <C-W>h
 map <C-l> <C-W>l
 map <Leader>/ :vsp<CR>
 
+map <Leader>w :wall!<CR>
+
 " 设置md文件类型未markdown
 autocmd BufRead,BufNewFile *.md set filetype=markdown
 

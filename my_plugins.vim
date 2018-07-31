@@ -25,6 +25,7 @@ map <Leader>P :ALEFix<CR>
 Plug 'scrooloose/nerdcommenter'
 Plug 'scrooloose/nerdtree'
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
+Plug 'Xuyuanp/nerdtree-git-plugin'
 
 " Plug 'rbgrouleff/bclose.vim'
 
@@ -36,10 +37,16 @@ Plug 'easymotion/vim-easymotion'
 Plug 'kien/ctrlp.vim'
 let g:ctrlp_custom_ignore = 'node_modules\|DS_Store\|git'
 
+" Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
+" Plug 'junegunn/fzf.vim'
+
 " 自动闭合
 Plug 'jiangmiao/auto-pairs'
 
 Plug 'tomasr/molokai'
+Plug 'morhetz/gruvbox'
+
+" Plug 'jszakmeister/vim-togglecursor'
 
 Plug 'chrisbra/NrrwRgn'
 
@@ -49,10 +56,21 @@ Plug 'chrisbra/NrrwRgn'
 
 " Plug 'vim-airline/vim-airline'
 Plug 'itchyny/lightline.vim'
+let g:lightline = {
+      \ 'colorscheme': 'powerline',
+      \ 'active': {
+      \   'left': [ [ 'mode', 'paste' ],
+      \             [ 'gitbranch', 'readonly', 'filename', 'modified' ] ]
+      \ },
+      \ 'component_function': {
+      \   'gitbranch': 'fugitive#head'
+      \ },
+      \ }
 
 Plug 'pangloss/vim-javascript', { 'for': 'javascript' }
+" Plug 'jelera/vim-javascript-syntax', { 'for': 'javascript.jsx' }
 Plug 'mxw/vim-jsx', { 'for': 'javascript' }
-let g:jsx_ext_required = 0
+" let g:jsx_ext_required = 0
 
 Plug 'junegunn/goyo.vim', { 'for': 'markdown' }
 Plug 'junegunn/limelight.vim', { 'for': 'markdown' }
@@ -61,7 +79,7 @@ Plug 'junegunn/limelight.vim', { 'for': 'markdown' }
 
 Plug 'posva/vim-vue', { 'for': 'vue' }
 
-" Plug 'tpope/vim-fugitive'
+Plug 'tpope/vim-fugitive'
 
 Plug 'tpope/vim-surround'
 

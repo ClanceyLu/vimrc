@@ -23,6 +23,9 @@ vnoremap <silent> * :<C-u>call VisualSelection('', '')<CR>/<C-R>=@/<CR><CR>
 vnoremap <silent> # :<C-u>call VisualSelection('', '')<CR>?<C-R>=@/<CR><CR>
 
 set hlsearch " 搜索高亮
+set incsearch " 输入高亮
+
+set lazyredraw
 
 set mouse=a " 允许使用鼠标
 
@@ -78,24 +81,16 @@ map <C-h> <C-W>h
 map <C-l> <C-W>l
 map <Leader>/ :vsp<CR>
 
+map <Leader>bd :bufdo bd<CR>
 map <Leader>w :wall!<CR>
+command W w !sudo tee % > /dev/null
+
+" nmap <M-j> mz:m+<CR>`z
+" nmap <M-k> mz:m-2<CR>`z
+
+" 设置滚动页首页页尾7行间距
+set so=7
 
 " 设置md文件类型未markdown
 autocmd BufRead,BufNewFile *.md set filetype=markdown
 
-function! VisualSelection(direction, extra_filter) range
-    let l:saved_reg = @"
-    execute "normal! vgvy"
-
-    let l:pattern = escape(@", "\\/.*'$^~[]")
-    let l:pattern = substitute(l:pattern, "\n$", "", "")
-
-    if a:direction == 'gv'
-        call CmdLine("Ack '" . l:pattern . "' " )
-    elseif a:direction == 'replace'
-        call CmdLine("%s" . '/'. l:pattern . '/')
-    endif
-
-    let @/ = l:pattern
-    let @" = l:saved_reg
-endfunction

@@ -26,11 +26,24 @@ set hlsearch " 搜索高亮
 set incsearch " 输入高亮
 
 set lazyredraw
+set wildmenu
 
 set mouse=a " 允许使用鼠标
 
 set autoread " 文件发生变化，自动读取
 set ignorecase " 搜索忽略大小写
+set smartcase
+set magic
+
+" 禁止声音
+set noerrorbells
+set novisualbell
+set t_vb=
+set tm=500
+
+if has("gui_macvim")
+    autocmd GUIEnter * set vb t_vb=
+endif
 
 " set foldenable
 set foldmethod=syntax

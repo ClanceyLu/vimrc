@@ -4,10 +4,23 @@ call plug#begin(vimPlug)
 
 if has('nvim')
     Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
-    Plug 'carlitux/deoplete-ternjs', { 'do': 'npm install -g tern' }
 else
-    Plug 'Valloric/YouCompleteMe'
+    Plug 'Shougo/deoplete.nvim'
+    Plug 'roxma/nvim-yarp'
+    Plug 'roxma/vim-hug-neovim-rpc'
+    " Plug 'Valloric/YouCompleteMe'
 endif
+Plug 'carlitux/deoplete-ternjs', { 'do': 'npm install -g tern' }
+
+let g:deoplete#enable_at_startup = 1
+inoremap <silent><expr> <TAB>
+            \ pumvisible() ? "\<C-n>" :
+            \ <SID>check_back_space() ? "\<TAB>" :
+            \ deoplete#mappings#manual_complete()
+function! s:check_back_space() abort "{{{
+    let col = col('.') - 1
+    return !col || getline('.')[col - 1]  =~ '\s'
+endfunction"}}}
 
 Plug 'terryma/vim-multiple-cursors'
 
@@ -25,6 +38,8 @@ map <Leader>P :ALEFix<CR>
 Plug 'scrooloose/nerdcommenter'
 Plug 'scrooloose/nerdtree'
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
+let NERDTreeShowHidden = 1
+let NERDTreeQuitOnOpen = 1
 Plug 'Xuyuanp/nerdtree-git-plugin'
 
 " Plug 'rbgrouleff/bclose.vim'
@@ -49,6 +64,13 @@ Plug 'morhetz/gruvbox'
 " Plug 'jszakmeister/vim-togglecursor'
 
 Plug 'chrisbra/NrrwRgn'
+
+" typescript
+Plug 'leafgarland/typescript-vim'
+if !exists("g:ycm_semantic_triggers")
+  let g:ycm_semantic_triggers = {}
+endif
+let g:ycm_semantic_triggers['typescript'] = ['.']
 
 " Plug 'prettier/vim-prettier', {
 "   \ 'do': 'npm install',

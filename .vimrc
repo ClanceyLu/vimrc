@@ -14,18 +14,23 @@ catch
 endtry
 
 try
-	set guifont=Hack:h18
+    set guifont=Hack:h18
 catch
 endtry
 
 if has('gui_running')
-	" some code
-	" set background=light
-	set transparency=10
-	set guifont=Hack:h14
+    " some code
+    " set background=light
+    set transparency=10
+    set macligatures
+    set guifont=Fira\ Code:h14
+    " set guifont=Hack:h14
     " au GUIEnter * simalt ~x
     set guioptions-=L
     set guioptions-=r
+    set guioptions-=T
+    set guioptions-=m
+    set guioptions=
 endif
 
 " 主题
@@ -85,18 +90,6 @@ map <Leader> <Plug>(easymotion-prefix)
 
 " lightline
 set laststatus=2
-
-if has('nvim')
-    let g:deoplete#enable_at_startup = 1
-    inoremap <silent><expr> <TAB>
-                \ pumvisible() ? "\<C-n>" :
-                \ <SID>check_back_space() ? "\<TAB>" :
-                \ deoplete#mappings#manual_complete()
-    function! s:check_back_space() abort "{{{
-        let col = col('.') - 1
-        return !col || getline('.')[col - 1]  =~ '\s'
-    endfunction"}}}
-endif
 
 let g:ctrlp_map='<C-p>'
 let g:crtlp_cmd='CtrlP'

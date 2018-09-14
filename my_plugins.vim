@@ -52,8 +52,13 @@ Plug 'easymotion/vim-easymotion'
 Plug 'kien/ctrlp.vim'
 let g:ctrlp_custom_ignore = 'node_modules\|DS_Store\|git'
 
-" Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
-" Plug 'junegunn/fzf.vim'
+Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
+Plug 'junegunn/fzf.vim'
+" - down / up / left / right
+let g:fzf_layout = { 'down': '~40%' }
+
+nmap <silent> <C-p> :Files<CR>
+nmap <silent> <Leader>b :Files<CR>
 
 " 自动闭合
 Plug 'jiangmiao/auto-pairs'

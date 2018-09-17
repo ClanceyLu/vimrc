@@ -78,9 +78,6 @@ let g:ycm_show_diagonstics_ui=0
 " vue
 autocmd FileType vue syntax sync fromstart
 
-" ack
-map <Leader>a :Ack -i<Space>
-
 let g:ale_sign_error = '✗'
 let g:ale_sign_warning = '⚡'
 

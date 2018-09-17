@@ -11,6 +11,11 @@ else
     " Plug 'Valloric/YouCompleteMe'
 endif
 Plug 'carlitux/deoplete-ternjs', { 'do': 'npm install -g tern' }
+let g:deoplete#sources#ternjs#filetypes = [
+            \ 'jsx',
+            \ 'javascript.jsx',
+            \ 'vue'
+            \ ]
 
 let g:deoplete#enable_at_startup = 1
 inoremap <silent><expr> <TAB>
@@ -48,17 +53,14 @@ Plug 'Xuyuanp/nerdtree-git-plugin'
 
 Plug 'easymotion/vim-easymotion'
 
-" ctrlp
-Plug 'kien/ctrlp.vim'
-let g:ctrlp_custom_ignore = 'node_modules\|DS_Store\|git'
-
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
 " - down / up / left / right
 let g:fzf_layout = { 'down': '~40%' }
 
 nmap <silent> <C-p> :Files<CR>
-nmap <silent> <Leader>b :Files<CR>
+nmap <silent> <Leader>b :Buffers<CR>
+nmap <silent> <Leader>a :Ag<CR>
 
 " 自动闭合
 Plug 'jiangmiao/auto-pairs'
@@ -112,7 +114,7 @@ Plug 'tpope/vim-surround'
 
 Plug 'airblade/vim-gitgutter'
 
-Plug 'mileszs/ack.vim'
+" Plug 'mileszs/ack.vim'
 
 " 显示标记
 Plug 'kshenoy/vim-signature'

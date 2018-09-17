@@ -74,7 +74,7 @@ map <C-l> <C-W>l
 
 ### 搜索
 
-- 全局搜索(Ack): `<Leader>a`
+- 全局搜索(~~Ack~~ Ag): `<Leader>a`
 - 取消搜索高亮: `<Leader><CR>`
 
 ### 文件
@@ -99,30 +99,7 @@ map <C-l> <C-W>l
 
 ## 插件
 
-### [YouCompleteMe](https://github.com/Valloric/YouCompleteMe)
-
-#### 作用
-异步补全
-
-#### 配置
-
-默认没有开启
-编辑`my_plugins.vim`，取消`Plug 'Valloric/YouCompleteMe'`的注释
-然后执行`:PlugInstall`
-
-```
-cd ~/.vim/plugged/YouCompleteMe
-# 仅安装javascript支持
-./install.py --js-completer
-# 安装所有语言支持
-./install.py --all
-```
-[更多](https://github.com/Valloric/YouCompleteMe#mac-os-x)
-
-拷贝本`.ycm_extra_conf.py`到你的`HOME`目录
-```
-cp ~/.vim_conf/.ycm_extra_conf.py ~
-```
+### ~~[YouCompleteMe](https://github.com/Valloric/YouCompleteMe)~~
 
 ### [vim-surround](https://github.com/tpope/vim-surround)
 
@@ -132,7 +109,9 @@ cp ~/.vim_conf/.ycm_extra_conf.py ~
 
 ### [vim-multiple-cursors](https://github.com/terryma/vim-multiple-cursors)
 
-### [ctrlp](https://github.com/kien/ctrlp.vim)
+### ~~[ctrlp](https://github.com/kien/ctrlp.vim)~~
+
+### [fzf.vim](https://github.com/junegunn/fzf.vim)
 
 ## 其他
 

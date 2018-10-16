@@ -1,7 +1,6 @@
 # My Vim Configuration
 
 - [安装](#安装)
-- [截图预览](#截图预览)
 - [添加自己的配置](#添加自己的配置)
     - [添加配置](#添加配置)
     - [添加插件](#添加插件)
@@ -18,11 +17,6 @@
 ```
 git clone https://github.com/ClanceyLu/vimrc.git $HOME/.vim_conf && cd $HOME/.vim_conf && ./install.sh
 ```
-
-## 截图预览
-
-![截图](img/screenshort.png?raw=true)
-
 ## 添加自己的配置
 
 ### 添加配置

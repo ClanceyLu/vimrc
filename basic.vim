@@ -60,11 +60,20 @@ set noswapfile
 
 " undo持久化
 if has('persistent_undo')
-	set undofile
-	set undodir=$HOME/.vim/undo
-	" set undolevels=1000
-	" set undoreload=1000
+    set undofile
+    set undodir=$HOME/.vim/undo
+    " set undolevels=1000
+    " set undoreload=1000
 endif
+
+" 快速移动某行
+nnoremap [e :<c-u>execute 'move -1-'. v:count1<CR>
+nnoremap ]e :<c-u>execute 'move +'. v:count1<CR>
+
+" 添加空行
+nnoremap <Leader>j<space> :<c-u>put! =repeat(nr2char(10), v:count1)<cr>'[
+nnoremap <Leader>o :<c-u>put =repeat(nr2char(10), v:count1)<cr>
+
 
 " 高亮当前列
 " set cursorcolumn
@@ -94,6 +103,8 @@ map <C-h> <C-W>h
 map <C-l> <C-W>l
 map <Leader>/ :vsp<CR>
 
+map <Leader>x :x<CR>
+
 map <Leader>bd :bufdo bd<CR>
 map <Leader>w :wall!<CR>
 command W w !sudo tee % > /dev/null
@@ -106,4 +117,15 @@ set so=7
 
 " 设置md文件类型未markdown
 autocmd BufRead,BufNewFile *.md set filetype=markdown
+
+" 插入模式光标样式改变
+" if empty($TMUX)
+"   let &t_SI = "\<Esc>]50;CursorShape=1\x7"
+"   let &t_EI = "\<Esc>]50;CursorShape=0\x7"
+"   let &t_SR = "\<Esc>]50;CursorShape=2\x7"
+" else
+"   let &t_SI = "\<Esc>Ptmux;\<Esc>\<Esc>]50;CursorShape=1\x7\<Esc>\\"
+"   let &t_EI = "\<Esc>Ptmux;\<Esc>\<Esc>]50;CursorShape=0\x7\<Esc>\\"
+"   let &t_SR = "\<Esc>Ptmux;\<Esc>\<Esc>]50;CursorShape=2\x7\<Esc>\\"
+" endif
 

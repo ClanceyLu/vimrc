@@ -10,6 +10,7 @@ else
     Plug 'roxma/vim-hug-neovim-rpc'
     " Plug 'Valloric/YouCompleteMe'
 endif
+
 Plug 'carlitux/deoplete-ternjs', { 'do': 'npm install -g tern' }
 let g:deoplete#sources#ternjs#filetypes = [
             \ 'jsx',
@@ -29,29 +30,53 @@ endfunction"}}}
 
 Plug 'terryma/vim-multiple-cursors'
 
-" Plug 'rdnetto/YCM-Generator', { 'branch': 'stable' }
-
-" Plug 'ternjs/tern_for_vim'
-
 Plug 'w0rp/ale'
 let g:ale_fixers = {'javascript': ['prettier', 'eslint']}
 map <Leader>P :ALEFix<CR>
+let g:ale_sign_error = '✗'
+let g:ale_sign_warning = '⚡'
 
 " Plug 'ybian/smartim'
 
 " 注释
 Plug 'scrooloose/nerdcommenter'
+" 注释前一个空格
+let g:NERDSpaceDelims = 1
+" 删除结尾空格
+let g:NERDTrimTrailingWhitespace = 1
+" 注释符号在最左边
+let g:NERDDefaultAlign = 'left'
+
+let g:NERDCompactSexyComs = 1
+
 Plug 'scrooloose/nerdtree'
+map <C-e> :NERDTreeToggle<CR>
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
 let NERDTreeShowHidden = 1
 let NERDTreeQuitOnOpen = 1
 Plug 'Xuyuanp/nerdtree-git-plugin'
+
+Plug 'mattn/emmet-vim', { 'for': 'html' }
+" Plug 'othree/html5.vim'
+
+Plug 'konfekt/fastfold'
+nmap zuz <Plug>(FastFoldupdate)
+let g:fastfold_savehook = 1
+let g:fastfold_fold_command_suffixes = ['x', 'X', 'a', 'A', 'o', 'O', 'c', 'C', 'u']
+let g:fastfold_fold_movement_commands = [']z', '[z', 'zj', 'zk']
+let g:javascript_fold = 1
+
+Plug 'itchyny/vim-cursorword'
+
+" Plug 'elzr/vim-json', { 'for': 'json' }
+" let g:vim_json_syntax_conceal = 0
 
 " Plug 'rbgrouleff/bclose.vim'
 
 " Plug 'amix/open_file_under_cursor.vim'
 
 Plug 'easymotion/vim-easymotion'
+map <Leader> <Plug>(easymotion-prefix)
 
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
@@ -62,18 +87,31 @@ nmap <silent> <C-p> :Files<CR>
 nmap <silent> <Leader>b :Buffers<CR>
 nmap <silent> <Leader>a :Ag<CR>
 
+Plug 'junegunn/vim-peekaboo'
+
+Plug 't9md/vim-choosewin'
+nmap - <Plug>(choosewin)
+let g:choosewin_overlay_enable = 1
+
 " 自动闭合
 Plug 'jiangmiao/auto-pairs'
 
 Plug 'tomasr/molokai'
 Plug 'morhetz/gruvbox'
 
+Plug 'mbbill/undotree'
+nmap <Leader>u :UndotreeToggle<CR>
+
+" Plug 'metakirby5/codi.vim'
+
+Plug 'brooth/far.vim'
+
 " Plug 'jszakmeister/vim-togglecursor'
 
 Plug 'chrisbra/NrrwRgn'
 
 " typescript
-Plug 'leafgarland/typescript-vim'
+Plug 'leafgarland/typescript-vim', { 'for': 'ts' }
 if !exists("g:ycm_semantic_triggers")
   let g:ycm_semantic_triggers = {}
 endif
@@ -85,6 +123,7 @@ let g:ycm_semantic_triggers['typescript'] = ['.']
 
 " Plug 'vim-airline/vim-airline'
 Plug 'itchyny/lightline.vim'
+set laststatus=2
 let g:lightline = {
       \ 'colorscheme': 'powerline',
       \ 'active': {
@@ -103,18 +142,29 @@ Plug 'mxw/vim-jsx', { 'for': 'javascript' }
 
 Plug 'junegunn/goyo.vim', { 'for': 'markdown' }
 Plug 'junegunn/limelight.vim', { 'for': 'markdown' }
+" Plug 'godlygeek/tabular', { 'for': 'markdown' }
+" Plug 'plasticboy/vim-markdown', { 'for': 'markdown' }
+" Plug 'junegunn/vim-xmark', { 'do': 'make', 'for': 'markdown' }
+
 
 " Plug 'mattn/emmet-vim', { 'for': 'html' }
 
 Plug 'posva/vim-vue', { 'for': 'vue' }
+autocmd FileType vue syntax sync fromstart
 
 Plug 'tpope/vim-fugitive'
+nmap <Leader>gt :Gstatus<CR>
+nmap <Leader>gd :Gdiff<CR>
+
+" start MUR
+Plug 'mhinz/vim-startify'
+
+Plug 'Yggdroot/indentLine'
 
 Plug 'tpope/vim-surround'
 
 Plug 'airblade/vim-gitgutter'
-
-" Plug 'mileszs/ack.vim'
+set updatetime=100
 
 " 显示标记
 Plug 'kshenoy/vim-signature'

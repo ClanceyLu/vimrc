@@ -7,10 +7,10 @@ try
     source ~/.vim_conf/plugins.vim
     source ~/.vim_conf/msic.vim
     source ~/.vim_conf/gui.vim
+    source ~/.vim_conf/filetype.vim
     " 加载个人配置
     source ~/.vimrc.local
 catch
 endtry
 " TODO: 根据安装自动生成目录
 " let pluginPath=fnamemodify('my_plugins.vim', ':p')
-

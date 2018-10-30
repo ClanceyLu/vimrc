@@ -1,13 +1,16 @@
-set nu " 行号
-set rnu " 动态行号
+set number " 行号
+set relativenumber " 动态行号
 syntax enable " 语法高亮
 set encoding=utf-8 " 编码格式
 set smarttab
 set si " smart indent
-set ai " 自动缩进
-set sw=4
-set ts=4
-set sts=4
+set autoindent " 自动缩进
+" shiftwidth reindent 操作时锁进的列数
+set shiftwidth=4
+" tabstop 一个 tab 占的列数
+set tabstop=4
+set softtabstop=4
+" expandtab 输入 tab 自动转为空格
 set expandtab
 set history=500
 filetype plugin on
@@ -19,16 +22,13 @@ set listchars=tab:›\ ,trail:•,extends:#,nbsp:. " Highlight problematic white
 " Toggle paste mode on and off
 map <leader>pp :setlocal paste!<cr>
 
-vnoremap <silent> * :<C-u>call VisualSelection('', '')<CR>/<C-R>=@/<CR><CR>
-vnoremap <silent> # :<C-u>call VisualSelection('', '')<CR>?<C-R>=@/<CR><CR>
-
 set hlsearch " 搜索高亮
 set incsearch " 输入高亮
 
 set lazyredraw
 set wildmenu
 
-set mouse=a " 允许使用鼠标
+" set mouse=a " 允许使用鼠标
 
 set autoread " 文件发生变化，自动读取
 set ignorecase " 搜索忽略大小写
@@ -42,7 +42,7 @@ set t_vb=
 set tm=500
 
 if has("gui_macvim")
-    autocmd GUIEnter * set vb t_vb=
+  autocmd GUIEnter * set vb t_vb=
 endif
 
 " set foldenable
@@ -55,15 +55,15 @@ au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g
 
 " 不备份文件
 set nobackup
-set nowb
+set nowritebackup
 set noswapfile
 
 " undo持久化
 if has('persistent_undo')
-    set undofile
-    set undodir=$HOME/.vim/undo
-    " set undolevels=1000
-    " set undoreload=1000
+  set undofile
+  set undodir=$HOME/.vim/undo
+  " set undolevels=1000
+  " set undoreload=1000
 endif
 
 " 快速移动某行
@@ -74,7 +74,6 @@ nnoremap ]e :<c-u>execute 'move +'. v:count1<CR>
 nnoremap <Leader>j<space> :<c-u>put! =repeat(nr2char(10), v:count1)<cr>'[
 nnoremap <Leader>o :<c-u>put =repeat(nr2char(10), v:count1)<cr>
 
-
 " 高亮当前列
 " set cursorcolumn
 
@@ -83,15 +82,10 @@ set cursorline
 " highlight CursorLine   cterm=NONE ctermbg=blue ctermfg=NONE guibg=NONE guifg=NONE
 " highlight CursorColumn cterm=NONE ctermbg=black ctermfg=green guibg=NONE guifg=NONE
 
-" 设置js等文件自动缩进两个空格
-" autocmd FileType javascript,html,vue,css,md set ai
-autocmd FileType javascript.jsx,html,vue,css,md,less set sw=2
-autocmd FileType javascript.jsx,html,vue,css,md,less set ts=2
-autocmd FileType javascript.jsx,html,vue,css,md,less set expandtab
-" autocmd FileType javascript,html,vue,css,md set sts=2
-
 " 修改<Leader>为','
 let mapleader=','
+" map jk to esc
+imap jk <Esc>
 
 map <Leader>bn :bn<CR>
 map <Leader>bp :bp<CR>
@@ -102,6 +96,17 @@ map <C-k> <C-W>k
 map <C-h> <C-W>h
 map <C-l> <C-W>l
 map <Leader>/ :vsp<CR>
+
+" map <C-a> ^
+map <C-e> $
+imap <C-e> <C-o>$
+imap <C-a> <C-o>^
+
+" tnoremap <Esc> <C-\><C-n>
+
+" 换行移动
+map j gj
+map k gk
 
 map <Leader>x :x<CR>
 

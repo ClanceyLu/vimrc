@@ -2,10 +2,11 @@
 augroup filetype_javascript
     autocmd!
     " autocmd FileType javascript,html,vue,css,md set ai
-    autocmd FileType javascript.jsx,html,vue,css,md,less set shiftwidth=2
-    autocmd FileType javascript.jsx,html,vue,css,md,less set tabstop=2
-    autocmd FileType javascript.jsx,html,vue,css,md,less set expandtab
-    autocmd FileType javascript.jsx,html,vue,css,md,less set softtabstop=2
+    autocmd FileType javascript,javascript.jsx,html,vue,css,md,less setlocal shiftwidth=2
+    autocmd FileType javascript,javascript.jsx,html,vue,css,md,less setlocal tabstop=2
+    autocmd FileType javascript,javascript.jsx,html,vue,css,md,less setlocal expandtab
+    autocmd FileType javascript,javascript.jsx,html,vue,css,md,less setlocal softtabstop=2
+    autocmd FileType javascript,javascript.jsx,html,vue,css,md,less setlocal foldmethod=syntax
 augroup END
 " }}}
 

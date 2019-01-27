@@ -4,10 +4,10 @@ endif
 
 try
     source ~/.vim_conf/basic.vim
+    source ~/.vim_conf/filetype.vim
     source ~/.vim_conf/plugins.vim
     source ~/.vim_conf/msic.vim
     source ~/.vim_conf/gui.vim
-    source ~/.vim_conf/filetype.vim
     " 加载个人配置
     source ~/.vimrc.local
 catch

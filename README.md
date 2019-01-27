@@ -1,5 +1,8 @@
 # My Vim Configuration
 
+不再维护
+使用[nvim](https://github.com/ClanceyLu/nvim)
+
 - [安装](#安装)
 - [添加自己的配置](#添加自己的配置)
     - [添加配置](#添加配置)
@@ -13,7 +16,7 @@
 ## 安装
 
 目前仅在Mac平台测试安装
-需要Vim 8.0+支持 
+需要Vim 8.0+支持
 ```
 git clone https://github.com/ClanceyLu/vimrc.git $HOME/.vim_conf && cd $HOME/.vim_conf && ./install.sh
 ```

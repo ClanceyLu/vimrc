@@ -13,7 +13,7 @@ endif
 
 " deoplete {{{
 Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
-Plug 'carlitux/deoplete-ternjs', { 'do': 'npm install -g tern', 'for': 'javascript.jsx' }
+" Plug 'carlitux/deoplete-ternjs', { 'do': 'npm install -g tern', 'for': 'javascript.jsx' }
 let g:deoplete#sources#ternjs#filetypes = [
       \ 'jsx',
       \ 'javascript.jsx',
@@ -34,7 +34,7 @@ endfunction " }}}
 " ale {{{
 Plug 'w0rp/ale'
 let g:ale_fixers = {'javascript': ['prettier', 'eslint']}
-map <Leader>P :ALEFix<CR>
+
 let g:ale_sign_error = '✗'
 let g:ale_sign_warning = '⚡'
 " }}}
@@ -72,7 +72,7 @@ let g:javascript_fold = 1
 
 " msic plug {{{
 Plug 'itchyny/vim-cursorword'
-Plug 'mhinz/vim-startify'  " start MUR
+" Plug 'mhinz/vim-startify'  " start MUR
 Plug 'Yggdroot/indentLine' " indentLine
 " }}}
 
@@ -109,7 +109,7 @@ nmap <Leader>u :UndotreeToggle<CR>
 " }}}
 
 " 在新窗口打开选择内容 <Leader>nr
-Plug 'chrisbra/NrrwRgn', { 'on': 'NR' }
+" Plug 'chrisbra/NrrwRgn', { 'on': 'NR' }
 
 " typescript {{{
 Plug 'leafgarland/typescript-vim', { 'for': 'ts' }
@@ -122,36 +122,37 @@ Plug 'leafgarland/typescript-vim', { 'for': 'ts' }
 " lightline {{{
 Plug 'itchyny/lightline.vim'
 set laststatus=2
+set noshowmode
 let g:lightline = {
-      \ 'colorscheme': 'powerline',
-      \ 'active': {
-      \   'left': [ [ 'mode', 'paste' ],
-      \             [ 'gitbranch', 'readonly', 'filename', 'modified' ] ],
-      \   'right': [ [ 'linter_checking', 'linter_errors', 'linter_warnings', 'linter_ok' ],
-      \              [ 'lineinfo' ],
-      \              [ 'percent' ], 
-      \              [ 'fileformat', 'fileencoding', 'filetype' ] ]
-      \ },
-      \ 'component_function': {
-      \   'gitbranch': 'fugitive#head'
-      \ },
-      \ 'component_expand': {
-      \  'statuslinetabs': 'LightlineStatuslineTabs',
-      \  'linter_checking': 'lightline#ale#checking',
-      \  'linter_warnings': 'lightline#ale#warnings',
-      \  'linter_errors': 'lightline#ale#errors',
-      \  'linter_ok': 'lightline#ale#ok',
-      \ },
-      \ 'component_type': {
-      \     'linter_checking': 'left',
-      \     'linter_warnings': 'warning',
-      \     'linter_errors': 'error',
-      \     'linter_ok': 'left'
-      \ }
-      \ }
+            \ 'colorscheme': 'powerline',
+            \ 'active': {
+            \   'left': [ [ 'mode', 'paste' ],
+            \             [ 'gitbranch', 'readonly', 'filename', 'modified' ] ],
+            \   'right': [ [ 'linter_checking', 'linter_errors', 'linter_warnings', 'linter_ok' ],
+            \              [ 'lineinfo' ],
+            \              [ 'percent' ], 
+            \              [ 'fileformat', 'fileencoding', 'filetype' ] ]
+            \ },
+            \ 'component_function': {
+            \   'gitbranch': 'fugitive#head'
+            \ },
+            \ 'component_expand': {
+            \  'statuslinetabs': 'LightlineStatuslineTabs',
+            \  'linter_checking': 'lightline#ale#checking',
+            \  'linter_warnings': 'lightline#ale#warnings',
+            \  'linter_errors': 'lightline#ale#errors',
+            \  'linter_ok': 'lightline#ale#ok',
+            \ },
+            \ 'component_type': {
+            \     'linter_checking': 'left',
+            \     'linter_warnings': 'warning',
+            \     'linter_errors': 'error',
+            \     'linter_ok': 'left'
+            \ }
+            \ }
 function! LightlineStatuslineTabs() abort
-  return join(map(range(1, tabpagenr('$')),
-        \ '(v:val == tabpagenr() ? "[*] " : "") . lightline#tab#filename(v:val)'), " \u2b81 ")
+    return join(map(range(1, tabpagenr('$')),
+                \ '(v:val == tabpagenr() ? "[*] " : "") . lightline#tab#filename(v:val)'), " \u2b81 ")
 endfunction
 
 Plug 'maximbaz/lightline-ale'
@@ -167,14 +168,16 @@ Plug 'junegunn/limelight.vim', { 'for': 'markdown' }
 " }}}
 
 " plug for web {{{
-Plug 'posva/vim-vue', { 'for': 'vue' }
-autocmd FileType vue syntax sync fromstart
+" Plug 'posva/vim-vue', { 'for': 'vue' }
+Plug 'darthmall/vim-vue', { 'for': 'vue' }
+" autocmd FileType vue syntax sync fromstart
+" autocmd BufRead,BufNewFile *.vue setlocal filetype=vue.html.javascript.css
 
 Plug 'mattn/emmet-vim', { 'for': 'html' }
 
-Plug 'pangloss/vim-javascript', { 'for': 'javascript.jsx' }
-" Plug 'othree/yajs.vim', { 'for': 'javascript.jsx' }
-Plug 'mxw/vim-jsx', { 'for': 'javascript.jsx' }
+Plug 'pangloss/vim-javascript', { 'for': 'javascript' }
+" Plug 'othree/yajs.vim', { 'for': 'javascript' }
+Plug 'maxmellon/vim-jsx-pretty', { 'for': 'javascript' }
 " }}}
 
 " plug for edit {{{

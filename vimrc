@@ -144,7 +144,7 @@ Plug 'chrisbra/unicode.vim', { 'for': 'journal' }
 Plug 'octol/vim-cpp-enhanced-highlight'
 Plug 'lyuts/vim-rtags', { 'for': ['c', 'cpp'] }
 Plug 'python-mode/python-mode', { 'branch': 'develop' }
-Plug 'iamcco/markdown-preview.nvim', { 'do': ':call mkdp#util#install()', 'for': 'markdown', 'on': 'MarkdownPreview' }
+" Plug 'iamcco/markdown-preview.nvim', { 'do': ':call mkdp#util#install()', 'for': 'markdown', 'on': 'MarkdownPreview' }
 Plug 'neoclide/coc.nvim', {'do': { -> coc#util#install() }}
 
 " Lint

@@ -131,6 +131,7 @@ Plug 'fatih/vim-go', { 'do': ':GoInstallBinaries' }
 Plug 'groenewege/vim-less'
 Plug 'pangloss/vim-javascript'
 Plug 'mxw/vim-jsx'
+Plug 'suy/vim-context-commentstring'
 Plug 'kchmck/vim-coffee-script'
 Plug 'slim-template/vim-slim'
 Plug 'Glench/Vim-Jinja2-Syntax'
@@ -1546,8 +1547,9 @@ nnoremap <Leader>G :Goyo<CR>
 " ALE
 " ----------------------------------------------------------------------------
 let g:ale_linters = {'java': [], 'yaml': [], 'scala': [], 'clojure': []}
-let g:ale_fixers = {'ruby': ['rubocop']}
+let g:ale_fixers = {'ruby': ['rubocop'], 'javascript': ['prettier']}
 let g:ale_lint_delay = 1000
+" let g:ale_fix_on_save = 1
 " let g:ale_sign_warning = '──'
 " let g:ale_sign_error = '══'
 

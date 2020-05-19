@@ -24,7 +24,6 @@ endif
 
 " My plugins
 Plug 'junegunn/vim-easy-align'
-Plug 'junegunn/vim-github-dashboard'
 Plug 'junegunn/vim-emoji'
 Plug 'junegunn/vim-pseudocl'
 Plug 'junegunn/vim-slash'
@@ -127,7 +126,7 @@ if v:version >= 703
   Plug 'venantius/vim-cljfmt'
 endif
 Plug 'tpope/vim-bundler', { 'for': 'ruby' }
-Plug 'fatih/vim-go', { 'do': ':GoInstallBinaries' }
+Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
 Plug 'groenewege/vim-less'
 Plug 'pangloss/vim-javascript'
 Plug 'mxw/vim-jsx'
@@ -145,11 +144,10 @@ Plug 'chrisbra/unicode.vim', { 'for': 'journal' }
 Plug 'octol/vim-cpp-enhanced-highlight'
 Plug 'lyuts/vim-rtags', { 'for': ['c', 'cpp'] }
 Plug 'python-mode/python-mode', { 'branch': 'develop' }
-" Plug 'iamcco/markdown-preview.nvim', { 'do': ':call mkdp#util#install()', 'for': 'markdown', 'on': 'MarkdownPreview' }
-Plug 'neoclide/coc.nvim', {'do': { -> coc#util#install() }}
+Plug 'neoclide/coc.nvim', { 'branch': 'release' }
 
 " Lint
-Plug 'w0rp/ale'
+" Plug 'w0rp/ale'
 
 call plug#end()
 endif
@@ -202,6 +200,8 @@ set completeopt=menuone,preview
 set cursorline
 set nrformats=hex
 set novisualbell
+set updatetime=300
+set signcolumn=yes
 silent! set cryptmethod=blowfish2
 
 set formatoptions+=1
@@ -279,7 +279,7 @@ if exists('&fixeol')
 endif
 
 if has('gui_running')
-  set guifont=Hack:h14
+  set guifont=Hack:h16
   set lines=999 columns=9999
   " silent! colo seoul256-light
   silent! colo seoul256
@@ -377,10 +377,10 @@ xnoremap <C-g> <Esc>
 cnoremap jk <C-c>
 
 " Movement in insert mode
-inoremap <C-h> <C-o>h
-inoremap <C-l> <C-o>a
-inoremap <C-j> <C-o>j
-inoremap <C-k> <C-o>k
+inoremap <C-b> <C-o>h
+inoremap <C-f> <C-o>a
+inoremap <C-n> <C-o>j
+inoremap <C-p> <C-o>k
 inoremap <C-^> <C-o><C-^>
 
 " Make Y behave like other capitals
@@ -1546,15 +1546,16 @@ nnoremap <Leader>G :Goyo<CR>
 " ----------------------------------------------------------------------------
 " ALE
 " ----------------------------------------------------------------------------
-let g:ale_linters = {'java': [], 'yaml': [], 'scala': [], 'clojure': []}
-let g:ale_fixers = {'ruby': ['rubocop'], 'javascript': ['prettier']}
-let g:ale_lint_delay = 1000
+" let g:ale_linters = {'java': [], 'yaml': [], 'scala': [], 'clojure': []}
+" let g:ale_fixers = {'ruby': ['rubocop'], 'javascript': ['prettier']}
+" let g:ale_lint_delay = 1000
 " let g:ale_fix_on_save = 1
 " let g:ale_sign_warning = '──'
 " let g:ale_sign_error = '══'
+" nnoremap <Leader>P :ALEFix<CR>
 
-nmap ]a <Plug>(ale_next_wrap)
-nmap [a <Plug>(ale_previous_wrap)
+" nmap ]a <Plug>(ale_next_wrap)
+" nmap [a <Plug>(ale_previous_wrap)
 
 " ----------------------------------------------------------------------------
 " gv.vim / gl.vim
@@ -1640,6 +1641,7 @@ augroup vimrc
 
   " Golang
   autocmd FileType go setlocal foldmethod=syntax
+  autocmd FileType go setlocal tabstop=4
 augroup END
 
 let g:clojure_maxlines = 60
